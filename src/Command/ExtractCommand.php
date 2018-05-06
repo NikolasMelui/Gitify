@@ -291,7 +291,7 @@ class ExtractCommand extends BaseCommand
         $excludes = (isset($options['exclude_keys']) && is_array($options['exclude_keys'])) ? $options['exclude_keys'] : array();
         foreach ($data as $key => $value) {
             if (
-                (isset($fieldMeta[$key]['default']) && $value === $fieldMeta[$key]['default']) //@fixme
+                (isset($fieldMeta[$key]['default']) && $value === $fieldMeta[$key]['default'] && $key !== 'class_key') //@fixme class_key is needed for ms2 products
                 || in_array($key, $excludes)
             )
             {
